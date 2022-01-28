@@ -32,7 +32,7 @@ export const menuDef = reactive({
 		title: 'followRequests',
 		icon: 'fas fa-user-clock',
 		show: computed(() => $i != null && $i.isLocked),
-		indicated: computed(() => $i != null && $i.hasPendingReceivedFollowRequest),
+		//indicated: computed(() => $i != null && $i.hasPendingReceivedFollowRequest),
 		to: '/my/follow-requests',
 	},
 	featured: {
