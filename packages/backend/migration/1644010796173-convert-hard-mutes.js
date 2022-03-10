@@ -1,7 +1,7 @@
-import RE2 from 're2';
+const RE2 = require('re2');
+const { MigrationInterface, QueryRunner } = require("typeorm");
 
-
-export class convertHardMutes1644010796173 {
+module.exports = class convertHardMutes1644010796173 {
     name = 'convertHardMutes1644010796173'
 
     async up(queryRunner) {

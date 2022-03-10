@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { User } from './user.js';
-import { id } from '../id.js';
-import { Clip } from './clip.js';
+import { User } from './user';
+import { id } from '../id';
+import { Clip } from './clip';
 
 @Entity()
 export class Meta {
@@ -137,6 +137,11 @@ export class Meta {
 	})
 	public cacheRemoteFiles: boolean;
 
+	@Column('boolean', {
+		default: false,
+	})
+	public proxyRemoteFiles: boolean;
+
 	@Column({
 		...id(),
 		nullable: true,
@@ -199,6 +204,12 @@ export class Meta {
 		comment: 'Drive capacity of a remote user (MB)',
 	})
 	public remoteDriveCapacityMb: number;
+
+	@Column('integer', {
+		default: 500,
+		comment: 'Max allowed note text length in characters',
+	})
+	public maxNoteTextLength: number;
 
 	@Column('varchar', {
 		length: 128,
@@ -343,20 +354,6 @@ export class Meta {
 		nullable: true,
 	})
 	public feedbackUrl: string | null;
-
-	@Column('varchar', {
-		length: 8192,
-		default: null,
-		nullable: true,
-	})
-	public defaultLightTheme: string | null;
-
-	@Column('varchar', {
-		length: 8192,
-		default: null,
-		nullable: true,
-	})
-	public defaultDarkTheme: string | null;
 
 	@Column('boolean', {
 		default: false,

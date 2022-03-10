@@ -2,30 +2,28 @@
  * Core Server
  */
 
-import * as fs from 'node:fs';
+import * as fs from 'fs';
 import * as http from 'http';
-import Koa from 'koa';
-import Router from '@koa/router';
-import mount from 'koa-mount';
-import koaLogger from 'koa-logger';
+import * as http2 from 'http2';
+import * as https from 'https';
+import * as Koa from 'koa';
+import * as Router from '@koa/router';
+import * as mount from 'koa-mount';
+import * as koaLogger from 'koa-logger';
 import * as slow from 'koa-slow';
 
-import activityPub from './activitypub.js';
-import nodeinfo from './nodeinfo.js';
-import wellKnown from './well-known.js';
-import config from '@/config/index.js';
-import apiServer from './api/index.js';
-import fileServer from './file/index.js';
-import proxyServer from './proxy/index.js';
-import webServer from './web/index.js';
-import Logger from '@/services/logger.js';
-import { envOption } from '../env.js';
-import { UserProfiles, Users } from '@/models/index.js';
-import { genIdenticon } from '@/misc/gen-identicon.js';
-import { createTemp } from '@/misc/create-temp.js';
-import { publishMainStream } from '@/services/stream.js';
-import * as Acct from '@/misc/acct.js';
-import { initializeStreamingServer } from './api/streaming.js';
+import activityPub from './activitypub';
+import nodeinfo from './nodeinfo';
+import wellKnown from './well-known';
+import config from '@/config/index';
+import apiServer from './api/index';
+import Logger from '@/services/logger';
+import { envOption } from '../env';
+import { UserProfiles, Users } from '@/models/index';
+import { genIdenticon } from '@/misc/gen-identicon';
+import { createTemp } from '@/misc/create-temp';
+import { publishMainStream } from '@/services/stream';
+import * as Acct from 'misskey-js/built/acct';
 
 export const serverLogger = new Logger('server', 'gray', false);
 
@@ -57,8 +55,8 @@ if (config.url.startsWith('https') && !config.disableHsts) {
 }
 
 app.use(mount('/api', apiServer));
-app.use(mount('/files', fileServer));
-app.use(mount('/proxy', proxyServer));
+app.use(mount('/files', require('./file')));
+app.use(mount('/proxy', require('./proxy')));
 
 // Init router
 const router = new Router();
@@ -74,8 +72,6 @@ router.get('/avatar/@:acct', async ctx => {
 		usernameLower: username.toLowerCase(),
 		host: host === config.host ? null : host,
 		isSuspended: false,
-	}, {
-		relations: ['avatar'],
 	});
 
 	if (user) {
@@ -118,18 +114,29 @@ router.get('/verify-email/:code', async ctx => {
 // Register router
 app.use(router.routes());
 
-app.use(mount(webServer));
+app.use(mount(require('./web')));
 
 function createServer() {
-	return http.createServer(app.callback());
+	if (config.https) {
+		const certs: any = {};
+		for (const k of Object.keys(config.https)) {
+			certs[k] = fs.readFileSync(config.https[k]);
+		}
+		certs['allowHTTP1'] = true;
+		return http2.createSecureServer(certs, app.callback()) as https.Server;
+	} else {
+		return http.createServer(app.callback());
+	}
 }
 
 // For testing
 export const startServer = () => {
 	const server = createServer();
 
-	initializeStreamingServer(server);
+	// Init stream server
+	require('./api/streaming')(server);
 
+	// Listen
 	server.listen(config.port);
 
 	return server;
@@ -138,7 +145,9 @@ export const startServer = () => {
 export default () => new Promise(resolve => {
 	const server = createServer();
 
-	initializeStreamingServer(server);
+	// Init stream server
+	require('./api/streaming')(server);
 
+	// Listen
 	server.listen(config.port, resolve);
 });

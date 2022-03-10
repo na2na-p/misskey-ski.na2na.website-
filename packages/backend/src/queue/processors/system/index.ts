@@ -1,14 +1,12 @@
-import Bull from 'bull';
-import { tickCharts } from './tick-charts.js';
-import { resyncCharts } from './resync-charts.js';
-import { cleanCharts } from './clean-charts.js';
-import { checkExpiredMutings } from './check-expired-mutings.js';
+import * as Bull from 'bull';
+import { tickCharts } from './tick-charts';
+import { resyncCharts } from './resync-charts';
+import { cleanCharts } from './clean-charts';
 
 const jobs = {
 	tickCharts,
 	resyncCharts,
 	cleanCharts,
-	checkExpiredMutings,
 } as Record<string, Bull.ProcessCallbackFunction<Record<string, unknown>> | Bull.ProcessPromiseFunction<Record<string, unknown>>>;
 
 export default function(dbQueue: Bull.Queue<Record<string, unknown>>) {

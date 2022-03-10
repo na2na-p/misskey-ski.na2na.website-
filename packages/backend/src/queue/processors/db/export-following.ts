@@ -1,15 +1,15 @@
-import Bull from 'bull';
+import * as Bull from 'bull';
 import * as tmp from 'tmp';
-import * as fs from 'node:fs';
+import * as fs from 'fs';
 
-import { queueLogger } from '../../logger.js';
-import { addFile } from '@/services/drive/add-file.js';
+import { queueLogger } from '../../logger';
+import { addFile } from '@/services/drive/add-file';
 import { format as dateFormat } from 'date-fns';
-import { getFullApAccount } from '@/misc/convert-host.js';
-import { Users, Followings, Mutings } from '@/models/index.js';
+import { getFullApAccount } from '@/misc/convert-host';
+import { Users, Followings, Mutings } from '@/models/index';
 import { In, MoreThan, Not } from 'typeorm';
-import { DbUserJobData } from '@/queue/types.js';
-import { Following } from '@/models/entities/following.js';
+import { DbUserJobData } from '@/queue/types';
+import { Following } from '@/models/entities/following';
 
 const logger = queueLogger.createSubLogger('export-following');
 
@@ -51,7 +51,7 @@ export async function exportFollowing(job: Bull.Job<DbUserJobData>, done: () => 
 			order: {
 				id: 1,
 			},
-		}) as Following[];
+		});
 
 		if (followings.length === 0) {
 			break;

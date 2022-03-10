@@ -1,6 +1,6 @@
-import RE2 from 're2';
-import { Note } from '@/models/entities/note.js';
-import { User } from '@/models/entities/user.js';
+const RE2 = require('re2');
+import { Note } from '@/models/entities/note';
+import { User } from '@/models/entities/user';
 
 type NoteLike = {
 	userId: Note['userId'];

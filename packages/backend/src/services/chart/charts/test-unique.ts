@@ -1,5 +1,6 @@
-import Chart, { KVs } from '../core.js';
-import { name, schema } from './entities/test-unique.js';
+import autobind from 'autobind-decorator';
+import Chart, { KVs } from '../core';
+import { name, schema } from './entities/test-unique';
 
 /**
  * For testing
@@ -10,14 +11,17 @@ export default class TestUniqueChart extends Chart<typeof schema> {
 		super(name, schema);
 	}
 
+	@autobind
 	protected async tickMajor(): Promise<Partial<KVs<typeof schema>>> {
 		return {};
 	}
 
+	@autobind
 	protected async tickMinor(): Promise<Partial<KVs<typeof schema>>> {
 		return {};
 	}
 
+	@autobind
 	public async uniqueIncrement(key: string): Promise<void> {
 		await this.commit({
 			foo: [key],

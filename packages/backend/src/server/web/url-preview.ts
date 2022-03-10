@@ -1,14 +1,14 @@
-import Koa from 'koa';
+import * as Koa from 'koa';
 import summaly from 'summaly';
-import { fetchMeta } from '@/misc/fetch-meta.js';
-import Logger from '@/services/logger.js';
-import config from '@/config/index.js';
-import { query } from '@/prelude/url.js';
-import { getJson } from '@/misc/fetch.js';
+import { fetchMeta } from '@/misc/fetch-meta';
+import Logger from '@/services/logger';
+import config from '@/config/index';
+import { query } from '@/prelude/url';
+import { getJson } from '@/misc/fetch';
 
 const logger = new Logger('url-preview');
 
-export const urlPreviewHandler = async (ctx: Koa.Context) => {
+module.exports = async (ctx: Koa.Context) => {
 	const url = ctx.query.url;
 	if (typeof url !== 'string') {
 		ctx.status = 400;
@@ -31,7 +31,7 @@ export const urlPreviewHandler = async (ctx: Koa.Context) => {
 		const summary = meta.summalyProxy ? await getJson(`${meta.summalyProxy}?${query({
 			url: url,
 			lang: lang ?? 'ja-JP',
-		})}`) : await summaly.default(url, {
+		})}`) : await summaly(url, {
 			followRedirects: false,
 			lang: lang ?? 'ja-JP',
 		});

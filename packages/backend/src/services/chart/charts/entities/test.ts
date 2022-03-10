@@ -1,4 +1,4 @@
-import Chart from '../../core.js';
+import Chart from '../../core';
 
 export const name = 'test';
 

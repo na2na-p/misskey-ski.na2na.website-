@@ -1,8 +1,9 @@
-import Chart, { KVs } from '../core.js';
-import { Notes } from '@/models/index.js';
+import autobind from 'autobind-decorator';
+import Chart, { KVs } from '../core';
+import { Notes } from '@/models/index';
 import { Not, IsNull } from 'typeorm';
-import { Note } from '@/models/entities/note.js';
-import { name, schema } from './entities/notes.js';
+import { Note } from '@/models/entities/note';
+import { name, schema } from './entities/notes';
 
 /**
  * ノートに関するチャート
@@ -13,6 +14,7 @@ export default class NotesChart extends Chart<typeof schema> {
 		super(name, schema);
 	}
 
+	@autobind
 	protected async tickMajor(): Promise<Partial<KVs<typeof schema>>> {
 		const [localCount, remoteCount] = await Promise.all([
 			Notes.count({ userHost: null }),
@@ -25,10 +27,12 @@ export default class NotesChart extends Chart<typeof schema> {
 		};
 	}
 
+	@autobind
 	protected async tickMinor(): Promise<Partial<KVs<typeof schema>>> {
 		return {};
 	}
 
+	@autobind
 	public async update(note: Note, isAdditional: boolean): Promise<void> {
 		const prefix = note.userHost === null ? 'local' : 'remote';
 

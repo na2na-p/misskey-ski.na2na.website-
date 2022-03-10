@@ -1,28 +1,33 @@
-import define from '../../define.js';
-import { AbuseUserReports, Users } from '@/models/index.js';
-import { getInstanceActor } from '@/services/instance-actor.js';
-import { deliver } from '@/queue/index.js';
-import { renderActivity } from '@/remote/activitypub/renderer/index.js';
-import { renderFlag } from '@/remote/activitypub/renderer/flag.js';
+import $ from 'cafy';
+import { ID } from '@/misc/cafy-id';
+import define from '../../define';
+import { AbuseUserReports, Users } from '@/models/index';
+import { getInstanceActor } from '@/services/instance-actor';
+import { deliver } from '@/queue/index';
+import { renderActivity } from '@/remote/activitypub/renderer/index';
+import { renderFlag } from '@/remote/activitypub/renderer/flag';
 
 export const meta = {
 	tags: ['admin'],
 
 	requireCredential: true,
 	requireModerator: true,
-} as const;
 
-export const paramDef = {
-	type: 'object',
-	properties: {
-		reportId: { type: 'string', format: 'misskey:id' },
-		forward: { type: 'boolean', default: false },
+	params: {
+		reportId: {
+			validator: $.type(ID),
+		},
+
+		forward: {
+			validator: $.optional.boolean,
+			required: false,
+			default: false,
+		},
 	},
-	required: ['reportId'],
 } as const;
 
 // eslint-disable-next-line import/no-default-export
-export default define(meta, paramDef, async (ps, me) => {
+export default define(meta, async (ps, me) => {
 	const report = await AbuseUserReports.findOne(ps.reportId);
 
 	if (report == null) {

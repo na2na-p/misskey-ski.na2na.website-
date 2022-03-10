@@ -1,6 +1,6 @@
+const { MigrationInterface, QueryRunner } = require("typeorm");
 
-
-export class chartV41643963705770 {
+module.exports = class chartV41643963705770 {
     name = 'chartV41643963705770'
 
     async up(queryRunner) {

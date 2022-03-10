@@ -1,6 +1,6 @@
-
-
-export class addShowTLReplies1629833361000 {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class addShowTLReplies1629833361000 {
 	constructor() {
 		this.name = 'addShowTLReplies1629833361000';
 	}
@@ -12,3 +12,4 @@ export class addShowTLReplies1629833361000 {
 		await queryRunner.query(`ALTER TABLE "user" DROP COLUMN "showTimelineReplies"`);
 	}
 }
+exports.addShowTLReplies1629833361000 = addShowTLReplies1629833361000;

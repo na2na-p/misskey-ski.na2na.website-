@@ -1,7 +1,8 @@
-import Chart, { KVs } from '../core.js';
-import { User } from '@/models/entities/user.js';
-import { Users } from '@/models/index.js';
-import { name, schema } from './entities/active-users.js';
+import autobind from 'autobind-decorator';
+import Chart, { KVs } from '../core';
+import { User } from '@/models/entities/user';
+import { Users } from '@/models/index';
+import { name, schema } from './entities/active-users';
 
 const week = 1000 * 60 * 60 * 24 * 7;
 const month = 1000 * 60 * 60 * 24 * 30;
@@ -16,14 +17,17 @@ export default class ActiveUsersChart extends Chart<typeof schema> {
 		super(name, schema);
 	}
 
+	@autobind
 	protected async tickMajor(): Promise<Partial<KVs<typeof schema>>> {
 		return {};
 	}
 
+	@autobind
 	protected async tickMinor(): Promise<Partial<KVs<typeof schema>>> {
 		return {};
 	}
 
+	@autobind
 	public async read(user: { id: User['id'], host: null, createdAt: User['createdAt'] }): Promise<void> {
 		await this.commit({
 			'read': [user.id],
@@ -36,6 +40,7 @@ export default class ActiveUsersChart extends Chart<typeof schema> {
 		});
 	}
 
+	@autobind
 	public async write(user: { id: User['id'], host: null, createdAt: User['createdAt'] }): Promise<void> {
 		await this.commit({
 			'write': [user.id],

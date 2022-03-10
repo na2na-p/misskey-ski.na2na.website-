@@ -1,8 +1,8 @@
-import Koa from 'koa';
-import manifest from './manifest.json' assert { type: 'json' };
-import { fetchMeta } from '@/misc/fetch-meta.js';
+import * as Koa from 'koa';
+import * as manifest from './manifest.json';
+import { fetchMeta } from '@/misc/fetch-meta';
 
-export const manifestHandler = async (ctx: Koa.Context) => {
+module.exports = async (ctx: Koa.Context) => {
 	const json = JSON.parse(JSON.stringify(manifest));
 
 	const instance = await fetchMeta(true);

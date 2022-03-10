@@ -1,7 +1,10 @@
-<!-- ℹ お読みください / README
+<!-- ℹ お読みください
 PRありがとうございます！ PRを作成する前に、コントリビューションガイドをご確認ください:
-Thank you for your PR! Before creating a PR, please check the contribution guide:
 https://github.com/misskey-dev/misskey/blob/develop/CONTRIBUTING.md
+-->
+<!-- ℹ README
+Thank you for your PR! Before creating a PR, please check the contribution guide:
+https://github.com/misskey-dev/misskey/blob/develop/docs/CONTRIBUTING.en.md
 -->
 
 # What
