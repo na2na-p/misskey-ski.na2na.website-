@@ -25,7 +25,7 @@
 		</div>
 	</template>
 	<div class="buttons right">
-		<button class="_button button"onclick="location.reload();"><i class="fa-solid fa-arrow-rotate-right"></i></button>
+		<button class="_button button" onclick="location.reload();"><i class="fa-solid fa-arrow-rotate-right"></i></button>
 		<template v-if="info && info.actions && !narrow">
 			<template v-for="action in info.actions">
 				<MkButton v-if="action.asFullButton" class="fullButton" primary @click.stop="action.handler"><i :class="action.icon" style="margin-right: 6px;"></i>{{ action.text }}</MkButton>
