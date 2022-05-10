@@ -65,9 +65,14 @@ export default define(meta, paramDef, async (ps, me) => {
 			.where('prof.description &@~ :query');
 
 		const query = Users.createQueryBuilder('user')
-			.where(new Brackets(qb => { qb
-				.where('user.name &@~ :query')
+			.where(new Brackets(qb => { 
+				qb.where('user.name &@~ :query')
 				.orWhere(`user.id IN (${ profQuery.getQuery() })`);
+
+				// Also search username if it qualifies as username
+				if (Users.validateLocalUsername(ps.query)) {
+					qb.orWhere('user.usernameLower LIKE :username', { username: ps.query.toLowerCase() + '%' });
+				}
 			}))
 			.andWhere(new Brackets(qb => { qb
 				.where('user.updatedAt IS NULL')
