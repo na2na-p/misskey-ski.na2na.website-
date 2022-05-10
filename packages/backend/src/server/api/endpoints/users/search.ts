@@ -61,7 +61,7 @@ export default define(meta, paramDef, async (ps, me) => {
 			.getMany();
 	} else {
 		const nameQuery = Users.createQueryBuilder('user')
-			.where(new Brackets(qb => { 
+			.where(new Brackets(qb => {
 				qb.where('user.name &@~ :query', { query: ps.query });
 
 				// Also search username if it qualifies as username
