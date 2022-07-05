@@ -2,7 +2,7 @@ version: "3"
 
 services:
   web:
-    build: .
+    # build: .
     image: na2na/misskey-na2na
     restart: always
     links:
