@@ -3,9 +3,9 @@ version: "3"
 services:
   web:
     build: .
+    image: na2na
     restart: always
     links:
-      - db
       - redis
 #      - es
     ports:
@@ -24,16 +24,6 @@ services:
       - internal_network
     volumes:
       - ./redis:/data
-
-  db:
-    restart: always
-    image: postgres:12.2-alpine
-    networks:
-      - internal_network
-    env_file:
-      - .config/docker.env
-    volumes:
-      - ./db:/var/lib/postgresql/data
 
 #  es:
 #    restart: always
