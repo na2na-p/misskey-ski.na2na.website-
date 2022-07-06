@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Build and Push to Docker Hub:
+  Build-and-Push-to-Docker-Hub:
     name: Build and Push to Docker Hub
     runs-on: ubuntu-latest
 
