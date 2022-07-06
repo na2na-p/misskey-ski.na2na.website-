@@ -1,9 +1,10 @@
 name: Publish Docker Image(misskey-na2na)
 
 on:
-  push:
+  pull_request:
     branches:
       - misskey-na2na-deploy
+    types: [closed]
   workflow_dispatch:
 
 jobs:
