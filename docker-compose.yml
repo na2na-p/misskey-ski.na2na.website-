@@ -3,7 +3,7 @@ version: "3"
 services:
   web:
     # build: .
-    image: na2na/misskey-na2na
+    image: na2na/misskey-na2na:latest
     restart: always
     links:
       - redis
