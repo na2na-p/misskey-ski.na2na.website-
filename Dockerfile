@@ -1,30 +1,24 @@
-FROM node:18-buster-slim AS base
+FROM node:18-bullseye AS builder
 
 ARG NODE_ENV=production
 
 WORKDIR /misskey
 
-ENV BUILD_DEPS autoconf automake file g++ gcc libc-dev libtool make nasm pkg-config python3 zlib1g-dev git
-
-FROM base AS builder
-
 COPY . ./
 
-RUN apt-get update && \
-	apt-get install -y --no-install-recommends $BUILD_DEPS && \
-	git submodule update --init && \
-	yarn install && \
-	yarn build && \
-	rm -rf .git
+RUN apt update
+RUN apt install -y build-essential
+RUN git submodule update --init
+RUN yarn install
+RUN yarn build
+RUN rm -rf .git
 
-FROM base AS runner
+FROM node:18-bullseye-slim AS runner
 
-RUN apt-get update && \
-	apt-get install -y --no-install-recommends \
-	ffmpeg \
-	tini
+WORKDIR /misskey
 
-ENTRYPOINT ["/usr/bin/tini", "--"]
+RUN apt update
+RUN apt install -y ffmpeg tini
 
 COPY --from=builder /misskey/node_modules ./node_modules
 COPY --from=builder /misskey/built ./built
@@ -34,4 +28,5 @@ COPY --from=builder /misskey/packages/client/node_modules ./packages/client/node
 COPY . ./
 
 ENV NODE_ENV=production
+ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["npm", "run", "migrateandstart"]
