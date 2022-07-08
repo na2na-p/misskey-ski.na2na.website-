@@ -1,4 +1,4 @@
-FROM node:16-bullseye AS base
+FROM node:18-bullseye AS base
 
 ARG NODE_ENV=production
 
