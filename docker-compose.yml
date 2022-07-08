@@ -3,7 +3,7 @@ version: "3"
 services:
   web:
     # build: .
-    image: na2na/misskey-na2na:latest
+    image: na2na/misskey-na2na:beta-debian
     restart: always
     links:
       - redis
