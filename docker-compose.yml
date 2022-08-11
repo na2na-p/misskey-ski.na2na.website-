@@ -7,7 +7,8 @@ services:
     restart: always
     links:
       - redis
-#      - es
+      # - db
+      # - es
     ports:
       - "3000:3000"
     networks:
@@ -17,9 +18,19 @@ services:
       - ./files:/misskey/files
       - ./.config:/misskey/.config:ro
 
+  # db:
+  #   restart: always
+  #   image: postgres:12.2-alpine
+  #   networks:
+  #     - internal_network
+  #   env_file:
+  #     - .config/docker.env
+  #   volumes:
+  #     - ./db:/var/lib/postgresql/data
+
   redis:
     restart: always
-    image: redis:4.0-alpine
+    image: redis:7.0.4-alpine
     networks:
       - internal_network
     volumes:
