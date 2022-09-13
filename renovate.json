@@ -10,7 +10,10 @@
 	"packageRules": [
 		{
 			"matchUpdateTypes": ["major"],
-			"addLabels": ["major update"]
+			"addLabels": ["major update"],
+			"digest": {
+				"enabled": false
+			}
 		}
 	]
 }
