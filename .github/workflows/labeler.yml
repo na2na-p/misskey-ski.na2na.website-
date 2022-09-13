@@ -2,7 +2,7 @@ name: "Pull Request Labeler"
 on:
   pull_request_target:
     branches-ignore:
-      - 'l10n_develop'
+      - "l10n_develop"
 
 jobs:
   triage:
@@ -11,6 +11,15 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/labeler@v4
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Generate github token
+        id: generate_token
+        uses: ./.github/actions/github-app-token
+        with:
+          app_id: ${{ secrets.ZNAZ_APP_ID }}
+          private_key: ${{ secrets.ZNAZ_PRIVATE_KEY }}
+      - name: Labeler
+        uses: actions/labeler@v4
+        with:
+          repo-token: ${{ steps.generate_token.outputs.token }}
