@@ -8,6 +8,7 @@ on:
       - main
       - develop
       - misskey-na2na
+      - misskey-na2na-deploy
 
 jobs:
   enable-auto-merge:
