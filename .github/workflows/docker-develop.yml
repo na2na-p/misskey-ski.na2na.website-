@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop
+      - misskey-na2na
   workflow_dispatch:
 
 jobs:
