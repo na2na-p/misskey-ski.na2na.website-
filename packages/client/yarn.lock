@@ -182,10 +182,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@fortawesome/fontawesome-free@6.1.2":
-  version "6.1.2"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-6.1.2.tgz#d18880eddeadd42b1c64cb559f2f3d13d47a4a64"
-  integrity sha512-XwWADtfdSN73/udaFm+1mnGIj/ShDZNFMe/PRoqv3FhQ4GNI2PUN70yFTPsjq65Lw2C9i4TG5/hTbxXIXVCiqQ==
+"@fortawesome/fontawesome-free@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-6.2.0.tgz#ba3510825b332816fe7190f28827f8cb33a298b5"
+  integrity sha512-CNR7qRIfCwWHNN7FnKUniva94edPdyQzil/zCwk3v6k4R6rR2Fr8i4s3PM7n/lyfPA6Zfko9z5WDzFxG9SW1uQ==
 
 "@hapi/hoek@^9.0.0":
   version "9.2.0"
@@ -874,10 +874,10 @@ broadcast-channel@4.14.0:
     rimraf "3.0.2"
     unload "2.3.1"
 
-"browser-image-resizer@git+https://x-access-token:ghs_JVEwJjXquqjYbQ5FA1EMGMrCNpodzK4FgNAO@github.com/misskey-dev/browser-image-resizer#v2.2.1":
+"browser-image-resizer@git+https://github.com/misskey-dev/browser-image-resizer#v2.2.1":
   version "2.2.1"
   uid "26a5c839f8a23da5ced4b9084ec9b872e04876d8"
-  resolved "git+https://x-access-token:ghs_JVEwJjXquqjYbQ5FA1EMGMrCNpodzK4FgNAO@github.com/misskey-dev/browser-image-resizer#26a5c839f8a23da5ced4b9084ec9b872e04876d8"
+  resolved "git+https://github.com/misskey-dev/browser-image-resizer#26a5c839f8a23da5ced4b9084ec9b872e04876d8"
   dependencies:
     exifreader "^3.1.0"
 
