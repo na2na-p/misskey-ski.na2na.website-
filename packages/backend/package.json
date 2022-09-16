@@ -158,7 +158,7 @@
 		"@types/rename": "1.0.4",
 		"@types/sanitize-html": "2.6.2",
 		"@types/semver": "7.3.12",
-		"@types/sharp": "0.30.5",
+		"@types/sharp": "0.31.0",
 		"@types/sinonjs__fake-timers": "8.1.2",
 		"@types/speakeasy": "2.0.7",
 		"@types/tinycolor2": "1.4.3",

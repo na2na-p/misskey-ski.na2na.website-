@@ -377,10 +377,10 @@
   resolved "https://registry.yarnpkg.com/@types/katex/-/katex-0.14.0.tgz#b84c0afc3218069a5ad64fe2a95321881021b5fe"
   integrity sha512-+2FW2CcT0K3P+JMR8YG846bmDwplKUTsWgT2ENwdQ1UdVfRk3GQrh6Mi4sTopy30gI8Uau5CEqHTDZ6YvWIUPA==
 
-"@types/matter-js@0.18.1":
-  version "0.18.1"
-  resolved "https://registry.yarnpkg.com/@types/matter-js/-/matter-js-0.18.1.tgz#9c2340f0f10d0eb630722718828b236c9d10a3bf"
-  integrity sha512-Qck+zYiE9GI7vMpeEzMC4JGk+/erTF0XVwOrpwvIGaBn9NPMXNhd/W5EaPkz+CpT+uO9A4C1bHbU+A4j/QzG6A==
+"@types/matter-js@0.18.2":
+  version "0.18.2"
+  resolved "https://registry.yarnpkg.com/@types/matter-js/-/matter-js-0.18.2.tgz#68a971386368882d3445de95dcf31289346dc22f"
+  integrity sha512-W9UC9DOPNBRTUocqqPZmzX3cbHmlZBI9jLn6SuxZz0n5QrPk382Ig3hbBWHqYU8TRUmTCJJhuanXeyMTavF7Mg==
 
 "@types/minimatch@*":
   version "3.0.3"
