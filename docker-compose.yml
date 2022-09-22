@@ -44,6 +44,8 @@ services:
       - "TAKE_FILE_OWNERSHIP=111"
     networks:
       - internal_network
+    env_file:
+      - .config/docker.env
     volumes:
       - ./elasticsearch:/usr/share/elasticsearch/data
 
