@@ -9,6 +9,7 @@ on:
       - develop
       - misskey-na2na
       - misskey-na2na-deploy
+      - nmnm
 
 jobs:
   enable-auto-merge:
