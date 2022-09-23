@@ -2,12 +2,12 @@ version: "3"
 
 services:
   web:
-    build: .
-    # image: na2na/misskey-na2na:release
+    # build: .
+    image: na2na/misskey-na2na:release
     restart: always
     links:
       - redis
-      - db
+      # - db
       # - es
     ports:
       - "3000:3000"
@@ -18,19 +18,19 @@ services:
       - ./files:/misskey/files
       - ./.config:/misskey/.config:ro
 
-  db:
-    restart: always
-    image: postgres:14.5-bullseye
-    networks:
-      - internal_network
-    env_file:
-      - .config/docker.env
-    volumes:
-      - ./db:/var/lib/postgresql/data
+  # db:
+  #   restart: always
+  #   image: postgres:14.5-bullseye
+  #   networks:
+  #     - internal_network
+  #   env_file:
+  #     - .config/docker.env
+  #   volumes:
+  #     - ./db:/var/lib/postgresql/data
 
   redis:
     restart: always
-    image: redis:7.0.4-alpine
+    image: redis:7.0.5-alpine
     networks:
       - internal_network
     volumes:
