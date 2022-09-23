@@ -9,11 +9,11 @@ COPY . ./
 RUN apt-get update \
 	&& apt-get install -y build-essential --no-install-recommends \
 	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/* \
-	&& git submodule update --init \
-	&& yarn install \
-	&& yarn build \
-	&& rm -rf .git
+	&& rm -rf /var/lib/apt/lists/*
+RUN git submodule update --init
+RUN yarn install
+RUN yarn build
+RUN rm -rf .git
 
 FROM node:18-bullseye-slim AS runner
 
