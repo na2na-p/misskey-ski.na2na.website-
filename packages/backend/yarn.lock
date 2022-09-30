@@ -648,10 +648,10 @@
   resolved "https://registry.yarnpkg.com/@types/jsonld/-/jsonld-1.5.6.tgz#4396c0b17128abf5773bb68b5453b88fc565b0d4"
   integrity sha512-OUcfMjRie5IOrJulUQwVNvV57SOdKcTfBj3pjXNxzXqeOIrY2aGDNGW/Tlp83EQPkz4tCE6YWVrGuc/ZeaAQGg==
 
-"@types/jsrsasign@10.5.3":
-  version "10.5.3"
-  resolved "https://registry.yarnpkg.com/@types/jsrsasign/-/jsrsasign-10.5.3.tgz#c0a06177f3c9db33091f60fcd952dcac9ac78f59"
-  integrity sha512-bgs6aREyMjnLUy2XeXq9oKeUoMXdAupr5Ymb7rUOVybwKvbCR7DctzkLKvnxgsLlXmh/YRBaTxwcNtlR+z6rEQ==
+"@types/jsrsasign@10.5.4":
+  version "10.5.4"
+  resolved "https://registry.yarnpkg.com/@types/jsrsasign/-/jsrsasign-10.5.4.tgz#e8a147c70e017198fd161600e24c938af7b5ae2f"
+  integrity sha512-05S2f4lGaWgCwFHsa3OEirc4VJf/sJRfhofzxUbuFbmm6NbffPXZrnJqquQAtS3g4C8Z0L9NHgW0znmtDxNoTQ==
 
 "@types/keygrip@*":
   version "1.0.2"
