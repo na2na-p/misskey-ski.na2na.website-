@@ -80,7 +80,7 @@
 		"@typescript-eslint/parser": "5.39.0",
 		"cross-env": "7.0.3",
 		"cypress": "10.9.0",
-		"eslint": "8.24.0",
+		"eslint": "8.25.0",
 		"eslint-plugin-import": "2.26.0",
 		"eslint-plugin-vue": "9.6.0",
 		"rollup": "2.79.1",
