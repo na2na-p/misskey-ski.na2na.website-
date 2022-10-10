@@ -419,10 +419,10 @@
   resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-layers/-/tfjs-layers-3.21.0.tgz#7fff00662e86f132bcab67f079c8653c3b1580e7"
   integrity sha512-CMVXsraakXgnXEnqD9QbtResA7nvV7Jz20pGmjFIodcQkClgmFFhdCG5N+zlVRHEz7VKG2OyfhltZ0dBq/OAhA==
 
-"@tensorflow/tfjs-node@3.21.0":
-  version "3.21.0"
-  resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-node/-/tfjs-node-3.21.0.tgz#05e11b977535da1e54a53b00dbd07d7059a0416a"
-  integrity sha512-0enUTZT9QEqG9Qn4kDNvv8uVyx+G7MzwTw4Z8LP16+5eXda8alOdTfS4towMT0SykuV1JStIGASHE0YVMn4PTA==
+"@tensorflow/tfjs-node@3.21.1":
+  version "3.21.1"
+  resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-node/-/tfjs-node-3.21.1.tgz#922f3af163403ccbd55791dfc5e25cfe770a4e15"
+  integrity sha512-WV77fiuux6E5RR7FRD8RL3yCruhoHjZMI9yybztGLItJwco2YVjHr6h4TOjaZcIMnxu9748iV118MN2ZeLXbdQ==
   dependencies:
     "@mapbox/node-pre-gyp" "1.0.9"
     "@tensorflow/tfjs" "3.21.0"
