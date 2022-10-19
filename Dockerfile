@@ -1,4 +1,4 @@
-FROM node:18-bullseye AS builder
+FROM node:19-bullseye AS builder
 
 ARG NODE_ENV=production
 
@@ -15,7 +15,7 @@ RUN yarn install
 RUN yarn build
 RUN rm -rf .git
 
-FROM node:18-bullseye-slim AS runner
+FROM node:19-bullseye-slim AS runner
 
 WORKDIR /misskey
 
