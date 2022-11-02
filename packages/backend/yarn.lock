@@ -681,10 +681,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/koa-bodyparser@4.3.8":
-  version "4.3.8"
-  resolved "https://registry.yarnpkg.com/@types/koa-bodyparser/-/koa-bodyparser-4.3.8.tgz#a1beb14f898daf7900c213cc2dedc5d76b35fe58"
-  integrity sha512-/Tk3xdaj/3y9VZ6K8z9fQ8myZOR2EEfwrlkbO4SjzLizRZaDFARSA8OGAC3B9lhC1R4wG0nCrTdd6o0NL2jrEQ==
+"@types/koa-bodyparser@4.3.9":
+  version "4.3.9"
+  resolved "https://registry.yarnpkg.com/@types/koa-bodyparser/-/koa-bodyparser-4.3.9.tgz#7456736dfdc2fe8e7fdec402341c0fa1089a74e8"
+  integrity sha512-nHgnvM5wZhbxwVyMjAhW9SNcAighAMAmQCK56mrE1vOrFSfVJexf3CQ8pmBTx90P+qBSsLsDEVDX3EeP/WWQMg==
   dependencies:
     "@types/koa" "*"
 
@@ -821,10 +821,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.6.2.tgz#331b7b9f8621c638284787c5559423822fdffc50"
   integrity sha512-LSw8TZt12ZudbpHc6EkIyDM3nHVWKYrAvGy6EAJfNfjusbwnThqjqxUKKRwuV3iWYeW/LYMzNgaq3MaLffQ2xA==
 
-"@types/node@18.11.5":
-  version "18.11.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.5.tgz#1bc94cf2f9ab5fe33353bc7c79c797dcc5325bef"
-  integrity sha512-3JRwhbjI+cHLAkUorhf8RnqUbFXajvzX4q6fMn5JwkgtuwfYtRQYI3u4V92vI6NJuTsbBQWWh3RZjFsuevyMGQ==
+"@types/node@18.11.9":
+  version "18.11.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.9.tgz#02d013de7058cea16d36168ef2fc653464cfbad4"
+  integrity sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==
 
 "@types/node@^14.11.8":
   version "14.17.9"
@@ -882,12 +882,10 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.3.tgz#7ee330ba7caafb98090bece86a5ee44115904c2c"
   integrity sha512-ewFXqrQHlFsgc09MK5jP5iR7vumV/BYayNC6PgJO2LPe8vrnNFyjQjSppfEngITi0qvfKtzFvgKymGheFM9UOA==
 
-"@types/ratelimiter@3.4.3":
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/@types/ratelimiter/-/ratelimiter-3.4.3.tgz#2159c234b9d75bcc2be39379f05c6af0a5e4a3b7"
-  integrity sha512-B/IRdHGcttRsDeDJ4+VFjzRA1mzqTxsYlg2X8GLQtTgRUMhQQc+bL8zFmuHhZkK4oA+Ldb4K1NogspNDxevWBA==
-  dependencies:
-    "@types/redis" "^2.8.0"
+"@types/ratelimiter@3.4.4":
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/@types/ratelimiter/-/ratelimiter-3.4.4.tgz#46447daafa3837d10e6fad195535c7bd4b415117"
+  integrity sha512-GSMb93iSA8KKFDgVL2Wzs/kqrHMJcU8xhLdwI5omoACcj7K18SacklLtY1C4G02HC5drd6GygtsIaGbfxJSe0g==
 
 "@types/redis@4.0.11":
   version "4.0.11"
@@ -927,7 +925,12 @@
   resolved "https://registry.yarnpkg.com/@types/seedrandom/-/seedrandom-2.4.30.tgz#d2efe425869b84163c2d56e779dddadb9372cbfa"
   integrity sha512-AnxLHewubLVzoF/A4qdxBGHCKifw8cY32iro3DQX9TPcetE95zBeVt3jnsvtvAUf1vwzMfwzp4t/L2yqPlnjkQ==
 
-"@types/semver@7.3.12", "@types/semver@^7.3.12":
+"@types/semver@7.3.13":
+  version "7.3.13"
+  resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.3.13.tgz#da4bfd73f49bd541d28920ab0e2bf0ee80f71c91"
+  integrity sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==
+
+"@types/semver@^7.3.12":
   version "7.3.12"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.3.12.tgz#920447fdd78d76b19de0438b7f60df3c4a80bf1c"
   integrity sha512-WwA1MW0++RfXmCr12xeYOOC5baSC9mSb0ZqCquFzKhcoF4TvHu5MKOuXsncgZcpVFhB1pXd5hZmM0ryAoCp12A==
