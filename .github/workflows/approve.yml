@@ -23,8 +23,8 @@ jobs:
         id: generate_token
         uses: ./.github/actions/github-app-token
         with:
-          app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.PRIVATE_KEY }}
+          app_id: ${{ secrets.ZNAZ_APP_ID }}
+          private_key: ${{ secrets.ZNAZ_PRIVATE_KEY }}
       - name: Approve
         run: gh pr review ${{ env.NUMBER }} --approve
         env:
