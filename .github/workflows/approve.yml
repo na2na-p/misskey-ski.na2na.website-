@@ -10,7 +10,7 @@ jobs:
     timeout-minutes: 1
     if: >-
       ${{
-        github.event.label.name == 'Bypass approve' &&
+        github.event.label.name == 'Bypass Approve' &&
         github.event.pull_request.user.login == 'na2na-p'
       }}
     env:
