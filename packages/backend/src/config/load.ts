@@ -28,25 +28,30 @@ export default function load() {
 	const clientManifest = JSON.parse(fs.readFileSync(`${_dirname}/../../../../built/_client_dist_/manifest.json`, 'utf-8'));
 	const config = yaml.load(fs.readFileSync(path, 'utf-8')) as Source;
 
-	const mixin = {} as Mixin;
-
+	// TODO: process.envから取得
 	const url = tryCreateUrl(config.url);
 
 	config.url = url.origin;
 
 	config.port = config.port || parseInt(process.env.PORT || '', 10);
 
-	mixin.version = meta.version;
-	mixin.host = url.host;
-	mixin.hostname = url.hostname;
-	mixin.scheme = url.protocol.replace(/:$/, '');
-	mixin.wsScheme = mixin.scheme.replace('http', 'ws');
-	mixin.wsUrl = `${mixin.wsScheme}://${mixin.host}`;
-	mixin.apiUrl = `${mixin.scheme}://${mixin.host}/api`;
-	mixin.authUrl = `${mixin.scheme}://${mixin.host}/auth`;
-	mixin.driveUrl = `${mixin.scheme}://${mixin.host}/files`;
-	mixin.userAgent = `Misskey/${meta.version} (${config.url})`;
-	mixin.clientEntry = clientManifest['src/init.ts'];
+	const host: Mixin['host'] = url.hostname;
+	const scheme: Mixin['scheme'] = url.protocol.replace(/:$/, '');
+	const wsScheme: Mixin['wsScheme'] = scheme.replace('http', 'ws');
+
+	const mixin: Mixin = {
+		version: meta.version,
+		host,
+		hostname: url.hostname,
+		scheme,
+		wsScheme,
+		wsUrl: `${wsScheme}://${host}`,
+		apiUrl: `${scheme}://${host}/api`,
+		authUrl: `${scheme}://${host}/auth`,
+		driveUrl: `${scheme}://${host}/files`,
+		userAgent: `Misskey/${meta.version} (${config.url})`,
+		clientEntry: clientManifest['src/init.ts'],
+	};
 
 	if (!config.redis.prefix) config.redis.prefix = mixin.host;
 
