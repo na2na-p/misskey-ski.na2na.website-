@@ -917,10 +917,10 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
-"@types/jsonld@1.5.7":
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/@types/jsonld/-/jsonld-1.5.7.tgz#587ac6447581d44d42ef037ecbe958aaea0074ed"
-  integrity sha512-RkIc/gMvFMiTubsy8rDHq23Dm9ig61zng5WhCjgShlbo9MBm1s0Z2JHpZwL0dwBNCNbaaOCYlFhBVozgjAU5Jg==
+"@types/jsonld@1.5.8":
+  version "1.5.8"
+  resolved "https://registry.yarnpkg.com/@types/jsonld/-/jsonld-1.5.8.tgz#292008d52d996358273401d31b1445fa14e16e2b"
+  integrity sha512-4l5t/jDnJpqZ+i7CLTTgPcT5BYXnAnwJupb07aAokPufCV0SjDHcwctUkSTuhIuSU9yHok+WOOngIGCtpL96gw==
 
 "@types/jsrsasign@10.5.4":
   version "10.5.4"
