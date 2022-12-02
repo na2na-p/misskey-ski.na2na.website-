@@ -3469,10 +3469,10 @@ tough-cookie@~2.5.0:
     psl "^1.1.28"
     punycode "^2.1.1"
 
-tsc-alias@1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/tsc-alias/-/tsc-alias-1.7.1.tgz#24e846788c53761a7d96135d1cf0e6566ae6ae5b"
-  integrity sha512-P4+0i+OB0hX17Ca+U6EJ4WZZ+OSupqW32VJ34N7g7+Ch+bwSx1AqYOvDdIVYEKymBh3dfG0t1qxbxPlBbtB1lQ==
+tsc-alias@1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/tsc-alias/-/tsc-alias-1.8.0.tgz#0c603d2bec95de3f3f81299783b21b472f61ab0e"
+  integrity sha512-+8PJYBw63bkOwKwqjBRmM/jRdePg6ucLB+Rrr+MZAiTfwvk8Itg8FIn9CWE3voJUOvpFnwDjidHyaRRUyzORYA==
   dependencies:
     chokidar "^3.5.3"
     commander "^9.0.0"
