@@ -2,8 +2,8 @@ version: "3"
 
 services:
   web:
-    # build: .
-    image: na2na/misskey-na2na:release
+    build: .
+    # image: na2na/misskey-na2na:release
     restart: always
     links:
       - redis
@@ -14,19 +14,21 @@ services:
     networks:
       - internal_network
       - external_network
+    env_file:
+      - .config/misskey.env
     volumes:
       - ./files:/misskey/files
       - ./.config:/misskey/.config:ro
 
-  # db:
-  #   restart: always
-  #   image: postgres:15.0-bullseye
-  #   networks:
-  #     - internal_network
-  #   env_file:
-  #     - .config/docker.env
-  #   volumes:
-  #     - ./db:/var/lib/postgresql/data
+  db:
+    restart: always
+    image: postgres:15.0-bullseye
+    networks:
+      - internal_network
+    env_file:
+      - .config/db.env
+    volumes:
+      - ./db:/var/lib/postgresql/data
 
   redis:
     restart: always
@@ -51,7 +53,7 @@ services:
   #   networks:
   #     - internal_network
   #   env_file:
-  #     - .config/docker.env
+  #     - .config/elasticsearch.env
   #   volumes:
   #     - ./elasticsearch:/usr/share/elasticsearch/data
 
