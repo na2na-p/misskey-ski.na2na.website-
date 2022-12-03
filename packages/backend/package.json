@@ -113,7 +113,7 @@
 		"tsc-alias": "1.8.1",
 		"tsconfig-paths": "4.1.1",
 		"twemoji-parser": "14.0.0",
-		"typeorm": "0.3.10",
+		"typeorm": "0.3.11",
 		"ulid": "2.3.0",
 		"unzipper": "0.10.11",
 		"uuid": "9.0.0",
