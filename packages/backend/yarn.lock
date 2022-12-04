@@ -237,20 +237,20 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@bull-board/api@4.6.4":
-  version "4.6.4"
-  resolved "https://registry.yarnpkg.com/@bull-board/api/-/api-4.6.4.tgz#f79b78c576a32c0e4e38c50e58d228cc72562c77"
-  integrity sha512-bXUYUwxKwJB2HhHkBPwNU2k3xsBUS1rG2rG4iw9NWj7C94Wu3tWXC/kbIFz7EYB37XT38rDzx3OXa8OkgWA/cQ==
+"@bull-board/api@4.7.0":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@bull-board/api/-/api-4.7.0.tgz#047f959aab918bb7101adca0512783eb89fd3a95"
+  integrity sha512-R8X1koPtMiDtJuNqbtBOcE1AGWdn8APlwLglR1c0Mi5ezNR3KjMfDBeuq4Y1Y9DDPP1X7WaCIlxUbTLq8c0zNw==
   dependencies:
     redis-info "^3.0.8"
 
-"@bull-board/koa@4.6.4":
-  version "4.6.4"
-  resolved "https://registry.yarnpkg.com/@bull-board/koa/-/koa-4.6.4.tgz#cb674e3660a1551cb619216c4140d993527f8798"
-  integrity sha512-jC1vkwjERABhvM6kXgXhHtekoLAuTUUfpbSqza9StRpbW7W84qTEMhdmZ6TocIU2kel13x1G5F7/j16Tfwp2gg==
+"@bull-board/koa@4.7.0":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@bull-board/koa/-/koa-4.7.0.tgz#fcd560d26ec1f38e9d50129b90ed04915b219654"
+  integrity sha512-00eKjZmNwFoPDnkf01qYVlDQT1VxmQExDSQ7bJ1Oeo6VlLTlhTgImLIVDwI7o411gSk7waMLskXZmnDNTsWXHA==
   dependencies:
-    "@bull-board/api" "4.6.4"
-    "@bull-board/ui" "4.6.4"
+    "@bull-board/api" "4.7.0"
+    "@bull-board/ui" "4.7.0"
     ejs "^3.1.7"
     koa "^2.13.1"
     koa-mount "^4.0.0"
@@ -258,12 +258,12 @@
     koa-static "^5.0.0"
     koa-views "^7.0.1"
 
-"@bull-board/ui@4.6.4":
-  version "4.6.4"
-  resolved "https://registry.yarnpkg.com/@bull-board/ui/-/ui-4.6.4.tgz#9c2c9f98d122ef80f34a1708eb68ef1be7429e92"
-  integrity sha512-9d12C2M0I6/t00p7xZdvdvQ5DcWD8Wx1pCroJXIBF1IWOhjGQt93MjaPzkYZlMW/VHu6Vt9LSZ1w4HKgTWbKKw==
+"@bull-board/ui@4.7.0":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@bull-board/ui/-/ui-4.7.0.tgz#53d09c3583ad69336a50d1a5bc985bc10e7e2d31"
+  integrity sha512-3j0itlz0M+5RvNKg16HyrsRnWS6lD7lQfzifQxwCBIMXoM7DZzK3z7w57gx2YW51xaK6Tj2qDbBMKEHXADxQpw==
   dependencies:
-    "@bull-board/api" "4.6.4"
+    "@bull-board/api" "4.7.0"
 
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"
