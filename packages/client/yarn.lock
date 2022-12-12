@@ -986,10 +986,10 @@ chartjs-adapter-date-fns@2.0.1:
   resolved "https://registry.yarnpkg.com/chartjs-adapter-date-fns/-/chartjs-adapter-date-fns-2.0.1.tgz#3d007d4985391362fb15c96310fff8376a434bae"
   integrity sha512-v3WV9rdnQ05ce3A0ZCjzUekJCAbfm6+3HqSoeY2BIkdMYZoYr/4T+ril1tZyDl869lz6xdNVMXejUFT9YKpw4A==
 
-chartjs-plugin-gradient@0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/chartjs-plugin-gradient/-/chartjs-plugin-gradient-0.5.1.tgz#ac7ce246bcafb749ec7b64fe0668d518c75c9475"
-  integrity sha512-vhwlYGZWan4MGZZ4Wj64Y4aIql1uCPCU1JcggLWn3cgYEv4G7pXp1YgM4XH5ugmyn6BVCgQqAhiJ2h6hppzHmQ==
+chartjs-plugin-gradient@0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/chartjs-plugin-gradient/-/chartjs-plugin-gradient-0.6.1.tgz#c558357c67e90167051adf409ffd5b69e87f210a"
+  integrity sha512-TGHNIh8KqQMLdb+UfY80cBHYRyOC47eeokmgkeajRdKGbFt462lJiyiq4ZJ25fiM7BGsmzoBLhmVyEw4B3gQxw==
 
 chartjs-plugin-zoom@1.2.1:
   version "1.2.1"
