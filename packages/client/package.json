@@ -72,7 +72,7 @@
 		"@types/katex": "0.16.0",
 		"@types/matter-js": "0.18.2",
 		"@types/punycode": "2.1.0",
-		"@types/seedrandom": "3.0.3",
+		"@types/seedrandom": "3.0.4",
 		"@types/throttle-debounce": "5.0.0",
 		"@types/tinycolor2": "1.4.3",
 		"@types/uuid": "8.3.4",
