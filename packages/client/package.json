@@ -20,7 +20,7 @@
 		"autobind-decorator": "2.4.0",
 		"autosize": "5.0.2",
 		"blurhash": "1.1.5",
-		"broadcast-channel": "4.19.1",
+		"broadcast-channel": "4.20.1",
 		"browser-image-resizer": "git+https://github.com/misskey-dev/browser-image-resizer#v2.2.1",
 		"chart.js": "3.9.1",
 		"chartjs-adapter-date-fns": "2.0.1",
