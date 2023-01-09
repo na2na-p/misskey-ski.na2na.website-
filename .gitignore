@@ -38,6 +38,7 @@ api-docs.json
 .DS_Store
 /files
 ormconfig.json
+.yarn
 
 # blender backups
 *.blend1
