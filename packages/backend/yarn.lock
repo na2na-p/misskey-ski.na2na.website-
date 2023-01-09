@@ -5377,10 +5377,10 @@ methods@^1.1.2:
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
   integrity sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=
 
-mfm-js@0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/mfm-js/-/mfm-js-0.23.0.tgz#1d1477761aa8259ddcac2e6882df53ed9ca5b82b"
-  integrity sha512-2Oe/YicoaP1EU2y9JB5729/PQLZK/7aAVomeJkp1h4XGP2//NMDC+DHkBbSO71U3GG086SAZM0JBB/hdPPSEXg==
+mfm-js@0.23.1:
+  version "0.23.1"
+  resolved "https://registry.yarnpkg.com/mfm-js/-/mfm-js-0.23.1.tgz#d8904f24741b1107821cbfcfc37fa3dfac5cffc1"
+  integrity sha512-4HFvUjFuw0xxFzaEcaytcNzxbLmKz/E5k1XoI+EBld7WcrH4kpf4tV10TAj2lrC9uZm0S6lF/Q2ypbQ4dJWDvg==
   dependencies:
     twemoji-parser "14.0.0"
 
