@@ -2,15 +2,14 @@ version: "3"
 
 services:
   web:
-    build: .
+    # build: .
+    image: na2na/misskey-na2na:release
     restart: always
     links:
-      - db
       - redis
-#      - es
+      # - db
+      # - es
     depends_on:
-      db:
-        condition: service_healthy
       redis:
         condition: service_healthy
     ports:
@@ -24,7 +23,7 @@ services:
 
   redis:
     restart: always
-    image: redis:7-alpine
+    image: redis:7.0.7-alpine
     networks:
       - internal_network
     volumes:
@@ -33,32 +32,38 @@ services:
       test: "redis-cli ping"
       interval: 5s
       retries: 20
-
-  db:
-    restart: always
-    image: postgres:15-alpine
-    networks:
-      - internal_network
-    env_file:
-      - .config/docker.env
-    volumes:
-      - ./db:/var/lib/postgresql/data
-    healthcheck:
-      test: "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"
-      interval: 5s
-      retries: 20
-
-#  es:
-#    restart: always
-#    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.4.2
-#    environment:
-#      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-#      - "TAKE_FILE_OWNERSHIP=111"
-#    networks:
-#      - internal_network
-#    volumes:
-#      - ./elasticsearch:/usr/share/elasticsearch/data
-
+  # db:
+  #   restart: always
+  #   image: postgres:15-alpine
+  #   networks:
+  #     - internal_network
+  #   env_file:
+  #     - .config/docker.env
+  #   volumes:
+  #     - ./db:/var/lib/postgresql/data
+  #   healthcheck:
+  #     test: "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"
+  #     interval: 5s
+  #     retries: 20
+  # es:
+  #   restart: always
+  #   image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
+  #   environment:
+  #     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  #     - "TAKE_FILE_OWNERSHIP=111"
+  #     - discovery.type=single-node
+  #     - cluster.name=docker-cluster
+  #     - bootstrap.memory_lock=true
+  #   ulimits:
+  #     memlock:
+  #       soft: -1
+  #       hard: -1
+  #   networks:
+  #     - internal_network
+  #   env_file:
+  #     - .config/docker.env
+  #   volumes:
+  #     - ./elasticsearch:/usr/share/elasticsearch/data
 networks:
   internal_network:
     internal: true
