@@ -72,3 +72,5 @@ misskey-assets
 
 # VSCode addon
 .favorites.json
+# nginx
+default.conf
