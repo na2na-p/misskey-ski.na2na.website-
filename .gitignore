@@ -63,3 +63,6 @@ ormconfig.json
 *.blend3
 *.blend4
 *.blend5
+
+# nginx
+default.conf
