@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:1.4
 
-ARG NODE_VERSION=18.14.2-bullseye
+ARG NODE_VERSION=18.15.0-bullseye
 
 # build assets & compile TypeScript
 
