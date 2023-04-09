@@ -1,11 +1,10 @@
 name: Storybook
 
 on:
-  push:
-    branches:
-      - master
-      - develop
-  pull_request_target:
+  # push:
+  #   branches-ignore:
+  #     - l10n_develop
+  workflow_dispatch:
 
 jobs:
   build:
@@ -15,7 +14,7 @@ jobs:
       NODE_OPTIONS: "--max_old_space_size=7168"
 
     steps:
-    - uses: actions/checkout@v3.5.0
+    - uses: actions/checkout@v3.3.0
       with:
         fetch-depth: 0
         submodules: true
