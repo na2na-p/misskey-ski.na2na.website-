@@ -1,11 +1,10 @@
 name: Storybook
 
 on:
-  push:
-    branches:
-      - master
-      - develop
-  pull_request_target:
+  # push:
+  #   branches-ignore:
+  #     - l10n_develop
+  workflow_dispatch:
 
 jobs:
   build:
