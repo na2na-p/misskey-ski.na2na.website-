@@ -75,7 +75,7 @@ jobs:
       env:
         CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
     - name: Notify that Chromatic will skip testing
-      uses: actions/github-script@v6.4.0
+      uses: actions/github-script@v6.4.1
       if: github.event_name == 'pull_request' && steps.chromatic_pull_request.outputs.skip == 'true'
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
