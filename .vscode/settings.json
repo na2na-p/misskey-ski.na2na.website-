@@ -8,5 +8,14 @@
     },
     "jest.jestCommandLine": "pnpm run jest",
     "jest.autoRun": "off",
-		"editor.formatOnSave": false
+        "editor.formatOnSave": false,
+        "cSpell.words": [
+					"getmeili",
+					"healthcheck",
+					"isready",
+					"Meili",
+					"meilisearch",
+					"memlock",
+					"ulimits"
+				]
 }
