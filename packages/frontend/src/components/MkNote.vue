@@ -315,7 +315,6 @@ function renote(viaKeyboard = false) {
 			}
 
 			const configuredVisibility = defaultStore.state.rememberNoteVisibility ? defaultStore.state.visibility : defaultStore.state.defaultNoteVisibility;
-			const localOnly = defaultStore.state.rememberNoteVisibility ? defaultStore.state.localOnly : defaultStore.state.defaultNoteLocalOnly;
 
 			let visibility = appearNote.visibility;
 			visibility = smallerVisibility(visibility, configuredVisibility);
@@ -324,7 +323,6 @@ function renote(viaKeyboard = false) {
 			}
 
 			os.api('notes/create', {
-				localOnly,
 				visibility,
 				renoteId: appearNote.id,
 			}).then(() => {
