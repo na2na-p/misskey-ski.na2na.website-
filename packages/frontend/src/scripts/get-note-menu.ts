@@ -570,7 +570,6 @@ export function getRenoteMenu(props: {
 				}
 
 				const configuredVisibility = defaultStore.state.rememberNoteVisibility ? defaultStore.state.visibility : defaultStore.state.defaultNoteVisibility;
-				const localOnly = defaultStore.state.rememberNoteVisibility ? defaultStore.state.localOnly : defaultStore.state.defaultNoteLocalOnly;
 
 				let visibility = appearNote.visibility;
 				visibility = smallerVisibility(visibility, configuredVisibility);
@@ -580,7 +579,6 @@ export function getRenoteMenu(props: {
 
 				if (!props.mock) {
 					misskeyApi('notes/create', {
-						localOnly,
 						visibility,
 						renoteId: appearNote.id,
 					}).then(() => {
