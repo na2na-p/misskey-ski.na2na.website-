@@ -49,8 +49,6 @@ jobs:
       - name: Prepare for build
         id: prepare-for-build
         run: |
-          cp .config/docker_example.env .config/docker.env
-          cp infra/nginx/.env.example infra/nginx/.env
           echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Cache Docker Build Cache
         uses: actions/cache@v3
@@ -65,26 +63,6 @@ jobs:
         uses: docker/setup-buildx-action@v3
         with:
           driver-opts: network=host
-      # - name: Generate Docker Image Tag
-      #   id: generate_docker_image_tag
-      #   run: |
-      #     SHA=${{ github.sha }}
-      #     TAG=$(TZ=UTC-9 date '+%Y%m')-${SHA:0:7}
-      #     echo "DOCKER_IMAGE_TAG_CI=$TAG" >> $GITHUB_ENV
-      #     echo TAG $TAG
-      #     echo "docker_image_tag_ci=$TAG" >> $GITHUB_OUTPUT
-      # - name: Cache Docker Registry
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: /tmp/docker-registry
-      #     key: docker-registry-${{ github.ref }}-${{ github.sha }}
-      #     restore-keys: |
-      #       docker-registry-${{ github.ref }}
-      #       docker-registry-
-      # - name: Boot-up Local Docker Registry
-      #   run: docker run -d -p 5000:5000 --restart=always --name registry -v /tmp/docker-registry:/var/lib/registry registry:2
-      # - name: Wait for Docker Registry
-      #   run: npx wait-on tcp:5000
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -95,23 +73,6 @@ jobs:
           docker buildx bake \
               -f 'infra/web/image-bake.hcl' \
               --builder="${{ steps.buildx.outputs.name }}" \
-              --set='*.cache-from=type=local,src=/tmp/.buildx-cache' \
-              --set='*.cache-to=type=local,dest=/tmp/.buildx-cache' \
               --set='web.tags=na2na/misskey-na2na:${{ steps.prepare-for-build.outputs.sha_short }}' \
               --set='web.tags=na2na/misskey-na2na:${{ needs.Check-image-already-exists.outputs.MISSKEY_VERSION }}' \
               --push
-      # - name: Pull from local registry
-      #   run: |
-      #     docker compose -f compose.ci.yml pull web
-
-      # - name: Push to registry
-      #   run: |
-      #     docker tag localhost:5000/misskey-ci:${{ steps.generate_docker_image_tag.outputs.docker_image_tag_ci }} na2na/misskey-na2na:release
-      #     docker push na2na/misskey-na2na:release
-      # - name: Push to registry (Only main push)
-      #   if: github.ref == 'refs/heads/main'
-      #   run: |
-      #     docker tag localhost:5000/misskey-ci:${{ steps.generate_docker_image_tag.outputs.docker_image_tag_ci }} na2na/misskey-na2na:${{ steps.prepare-for-build.outputs.sha_short }}
-      #     docker tag localhost:5000/misskey-ci:${{ steps.generate_docker_image_tag.outputs.docker_image_tag_ci }} na2na/misskey-na2na:${{ needs.Check-image-already-exists.outputs.MISSKEY_VERSION }}
-      #     docker push na2na/misskey-na2na:${{ steps.prepare-for-build.outputs.sha_short }}
-      #     docker push na2na/misskey-na2na:${{ needs.Check-image-already-exists.outputs.MISSKEY_VERSION }}
