@@ -93,14 +93,13 @@ jobs:
       - name: Build Docker Image
         run: |
           docker buildx bake \
+              -f 'infra/web/image-bake.hcl' \
               --builder="${{ steps.buildx.outputs.name }}" \
               --set='*.cache-from=type=local,src=/tmp/.buildx-cache' \
               --set='*.cache-to=type=local,dest=/tmp/.buildx-cache' \
-              -t na2na/misskey-na2na:${{ needs.Check-image-already-exists.outputs.MISSKEY_VERSION }} \
-              -t na2na/misskey-na2na:${{ steps.prepare-for-build.outputs.sha_short }} \
-              -t na2na/misskey-na2na:release \
-              --push \
-              -f 'compose.ci.yml'
+              --set='web.tags=na2na/misskey-na2na:${{ steps.prepare-for-build.outputs.sha_short }}' \
+              --set='web.tags=na2na/misskey-na2na:${{ needs.Check-image-already-exists.outputs.MISSKEY_VERSION }}' \
+              --push
       # - name: Pull from local registry
       #   run: |
       #     docker compose -f compose.ci.yml pull web
