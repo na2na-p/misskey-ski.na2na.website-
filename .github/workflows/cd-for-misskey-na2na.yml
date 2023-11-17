@@ -4,15 +4,14 @@ on:
   push:
     branches:
       - misskey-na2na
-      - topic/docker-build-optimize
   workflow_dispatch:
 
 env:
   DOCKER_TAG_API_URI: https://registry.hub.docker.com/v2/repositories/na2na/misskey-na2na/tags
 
 jobs:
-  Check-image-already-exists:
-    name: Check image already exists
+  Prepare:
+    name: Prepare
     runs-on: ubuntu-latest
     outputs:
       tag_exists: ${{ steps.check_docker_hub.outputs.tag_exists }}
@@ -38,10 +37,10 @@ jobs:
 
   Build-and-Push-to-Docker-Hub:
     needs:
-      - Check-image-already-exists
-    if: ${{ needs.Check-image-already-exists.outputs.tag_exists == 'false' }}
+      - Prepare
+    if: ${{ needs.Prepare.outputs.tag_exists == 'false' }}
     with:
-      MISSKEY_VERSION: ${{ needs.Check-image-already-exists.outputs.MISSKEY_VERSION }}
+      MISSKEY_VERSION: ${{ needs.Prepare.outputs.MISSKEY_VERSION }}
       IMAGE_REPOSITORY: na2na
       IMAGE_NAME: misskey-na2na
     uses: ./.github/workflows/image-push-for-misskey-na2na-release.yml
