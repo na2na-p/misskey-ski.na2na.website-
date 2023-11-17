@@ -103,10 +103,12 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push to registry
         run: |
-          docker tag localhost:5000/misskey-ci:${{ steps.generate_docker_image_tag.outputs.docker_image_tag_ci }} na2na/misskey:release
-          docker push na2na/misskey:release
+          docker tag localhost:5000/misskey-ci:${{ steps.generate_docker_image_tag.outputs.docker_image_tag_ci }} na2na/misskey-na2na:release
+          docker push na2na/misskey-na2na:release
       - name: Push to registry (Only main push)
         if: github.ref == 'refs/heads/main'
         run: |
-          docker tag localhost:5000/misskey-ci:${{ steps.generate_docker_image_tag.outputs.docker_image_tag_ci }} na2na/misskey:${{ steps.prepare-for-build.outputs.sha_short }}
-          docker push na2na/misskey:${{ steps.prepare-for-build.outputs.sha_short }}
+          docker tag localhost:5000/misskey-ci:${{ steps.generate_docker_image_tag.outputs.docker_image_tag_ci }} na2na/misskey-na2na:${{ steps.prepare-for-build.outputs.sha_short }}
+          docker tag localhost:5000/misskey-ci:${{ steps.generate_docker_image_tag.outputs.docker_image_tag_ci }} na2na/misskey-na2na:${{ needs.Check-image-already-exists.outputs.MISSKEY_VERSION }}
+          docker push na2na/misskey-na2na:${{ steps.prepare-for-build.outputs.sha_short }}
+          docker push na2na/misskey-na2na:${{ needs.Check-image-already-exists.outputs.MISSKEY_VERSION }}
