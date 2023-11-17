@@ -42,5 +42,7 @@ jobs:
     if: ${{ needs.Check-image-already-exists.outputs.tag_exists == 'false' }}
     with:
       MISSKEY_VERSION: ${{ needs.Check-image-already-exists.outputs.MISSKEY_VERSION }}
+      IMAGE_REPOSITORY: na2na
+      IMAGE_NAME: misskey-na2na
     uses: ./.github/workflows/image-push-for-misskey-na2na-release.yml
     secrets: inherit

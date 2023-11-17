@@ -6,6 +6,12 @@ on:
       MISSKEY_VERSION:
         required: true
         type: string
+      IMAGE_REPOSITORY:
+        required: true
+        type: string
+      IMAGE_NAME:
+        required: true
+        type: string
     secrets: {}
 
 jobs:
@@ -41,7 +47,7 @@ jobs:
           docker buildx bake \
               -f 'infra/web/image-bake.hcl' \
               --builder="${{ steps.buildx.outputs.name }}" \
-              --set='web.tags=na2na/misskey-na2na:${{ steps.prepare-for-build.outputs.sha_short }}' \
-              --set='web.tags=na2na/misskey-na2na:${{ inputs.MISSKEY_VERSION }}' \
-              --set='web.tags=na2na/misskey-na2na:release' \
+              --set='web.tags=${{ inputs.IMAGE_REPOSITORY }}/${{ inputs.IMAGE_NAME }}:${{ inputs.MISSKEY_VERSION }}' \
+              --set='web.tags=${{ inputs.IMAGE_REPOSITORY }}/${{ inputs.IMAGE_NAME }}:${{ steps.prepare-for-build.outputs.sha_short }}' \
+              --set='web.tags=${{ inputs.IMAGE_REPOSITORY }}/${{ inputs.IMAGE_NAME }}:release' \
               --push
