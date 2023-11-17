@@ -1,4 +1,4 @@
-name: Publish Docker Image(misskey-na2na)
+name: CD for Misskey(na2na)
 
 on:
   push:

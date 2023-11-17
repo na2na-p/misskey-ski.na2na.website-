@@ -43,4 +43,5 @@ jobs:
               --builder="${{ steps.buildx.outputs.name }}" \
               --set='web.tags=na2na/misskey-na2na:${{ steps.prepare-for-build.outputs.sha_short }}' \
               --set='web.tags=na2na/misskey-na2na:${{ inputs.MISSKEY_VERSION }}' \
+              --set='web.tags=na2na/misskey-na2na:release' \
               --push
