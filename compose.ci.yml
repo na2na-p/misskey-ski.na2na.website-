@@ -7,7 +7,7 @@ services:
         platforms:
           - linux/amd64
           - linux/arm64
-    image: localhost:5000/misskey-ci:${DOCKER_IMAGE_TAG_CI}
+    image: na2na/misskey-na2na:release
     restart: always
     links:
       - redis
@@ -85,7 +85,6 @@ services:
     build:
       context: ./infra/nginx
       dockerfile: ./Dockerfile
-    image: localhost:5000/misskey-na2na-nginx:${DOCKER_IMAGE_TAG_CI}
     restart: always
     links:
       - web
