@@ -1,13 +1,10 @@
 name: Publish Docker Image(misskey-na2na)
 
 on:
-  pull_request:
-    branches:
-      - misskey-na2na-deploy
-    types: [closed]
   push:
     branches:
       - misskey-na2na
+      - topic/docker-build-optimize
   workflow_dispatch:
 
 env:
@@ -19,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       tag_exists: ${{ steps.check_docker_hub.outputs.tag_exists }}
-      MISSKEY_VERSION: ${{ env.MISSKEY_VERSION }}
+      MISSKEY_VERSION: ${{ steps.check_docker_hub.outputs.MISSKEY_VERSION }}
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4.1.1
@@ -36,7 +33,7 @@ jobs:
           else
             echo "Tag $MISSKEY_VERSION does not exist on Docker Hub."
             echo "tag_exists=false" >> $GITHUB_OUTPUT
-            echo "MISSKEY_VERSION=$MISSKEY_VERSION" >> $GITHUB_ENV
+            echo "MISSKEY_VERSION=$MISSKEY_VERSION" >> $GITHUB_OUTPUT
           fi
 
   Build-and-Push-to-Docker-Hub:
@@ -47,42 +44,69 @@ jobs:
       MISSKEY_VERSION: ${{ needs.Check-image-already-exists.outputs.MISSKEY_VERSION }}
     if: ${{ needs.Check-image-already-exists.outputs.tag_exists == 'false' }}
     steps:
-      - name: Check out the repo
-        uses: actions/checkout@v4.1.1
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Prepare for build
+        id: prepare-for-build
+        run: |
+          cp .config/docker_example.env .config/docker.env
+          cp infra/nginx/.env.example infra/nginx/.env
+          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+      - name: Cache Docker Build Cache
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: docker-build-cache-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            docker-build-cache-${{ github.ref }}
+            docker-build-cache-
       - name: Set up Docker Buildx
         id: buildx
-        uses: docker/setup-buildx-action@v3.0.0
+        uses: docker/setup-buildx-action@v3
         with:
-          platforms: linux/amd64,linux/arm64
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v5
+          driver-opts: network=host
+      - name: Generate Docker Image Tag
+        id: generate_docker_image_tag
+        run: |
+          SHA=${{ github.sha }}
+          TAG=$(TZ=UTC-9 date '+%Y%m')-${SHA:0:7}
+          echo "DOCKER_IMAGE_TAG_CI=$TAG" >> $GITHUB_ENV
+          echo TAG $TAG
+          echo "docker_image_tag_ci=$TAG" >> $GITHUB_OUTPUT
+      - name: Cache Docker Registry
+        uses: actions/cache@v3
         with:
-          images: na2na/misskey
-          tags: |
-            type=edge
-            type=ref,event=pr
-            type=ref,event=branch
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-      - name: Login to DockerHub
+          path: /tmp/docker-registry
+          key: docker-registry-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            docker-registry-${{ github.ref }}
+            docker-registry-
+      - name: Boot-up Local Docker Registry
+        run: docker run -d -p 5000:5000 --restart=always --name registry -v /tmp/docker-registry:/var/lib/registry registry:2
+      - name: Wait for Docker Registry
+        run: npx wait-on tcp:5000
+      - name: Build Docker Image
+        run: |
+          docker buildx bake \
+              --builder="${{ steps.buildx.outputs.name }}" \
+              --set='*.cache-from=type=local,src=/tmp/.buildx-cache' \
+              --set='*.cache-to=type=local,dest=/tmp/.buildx-cache' \
+              --push \
+              -f 'compose.ci.yml'
+      - name: Pull from local registry
+        run: |
+          docker compose -f compose.ci.yml pull web
+      - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ vars.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          builder: ${{ steps.buildx.outputs.name }}
-          context: .
-          push: true
-          platforms: ${{ steps.buildx.outputs.platforms }}
-          provenance: false
-          tags: |
-            na2na/misskey-na2na:release
-            na2na/misskey-na2na:${{ env.MISSKEY_VERSION }}
-          labels: |
-            dev.na2na.misskey-na2na.version=${{ env.MISSKEY_VERSION }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+      - name: Push to registry
+        run: |
+          docker tag localhost:5000/misskey-ci:${{ steps.generate_docker_image_tag.outputs.docker_image_tag_ci }} na2na/misskey:release
+          docker push na2na/misskey:release
+      - name: Push to registry (Only main push)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          docker tag localhost:5000/misskey-ci:${{ steps.generate_docker_image_tag.outputs.docker_image_tag_ci }} na2na/misskey:${{ steps.prepare-for-build.outputs.sha_short }}
+          docker push na2na/misskey:${{ steps.prepare-for-build.outputs.sha_short }}
