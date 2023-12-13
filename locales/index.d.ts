@@ -548,6 +548,7 @@ export interface Locale {
     "volume": string;
     "masterVolume": string;
     "details": string;
+    "renoteFromDetails": string;
     "chooseEmoji": string;
     "unableToProcess": string;
     "recentUsed": string;
