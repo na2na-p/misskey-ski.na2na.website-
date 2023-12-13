@@ -556,6 +556,7 @@ export interface Locale {
     "notUseSound": string;
     "useSoundOnlyWhenActive": string;
     "details": string;
+    "renoteFromDetails": string;
     "chooseEmoji": string;
     "unableToProcess": string;
     "recentUsed": string;
