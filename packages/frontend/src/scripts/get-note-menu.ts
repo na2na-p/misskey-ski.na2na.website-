@@ -275,6 +275,10 @@ export function getNoteMenu(props: {
 		os.pageWindow(`/notes/${appearNote.id}`);
 	}
 
+	function openRenoteSource(): void {
+		os.pageWindow(`/notes/${appearNote.renote?.id}`);
+	}
+
 	async function translate(): Promise<void> {
 		if (props.translation.value != null) return;
 		props.translating.value = true;
@@ -304,7 +308,12 @@ export function getNoteMenu(props: {
 				icon: 'ti ti-info-circle',
 				text: i18n.ts.details,
 				action: openDetail,
-			}, {
+			}, ...(appearNote.renote ? [{
+				icon: 'ti ti-info-circle',
+				text: i18n.ts.renoteFromDetails,
+				action: openRenoteSource,
+			}] : []) ,
+			{
 				icon: 'ti ti-copy',
 				text: i18n.ts.copyContent,
 				action: copyContent,
