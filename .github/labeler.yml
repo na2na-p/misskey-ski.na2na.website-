@@ -1,21 +1,28 @@
-'packages/backend':
-- packages/backend/**/*
+packages/frontend:
+  - changed-files:
+    - any-glob-to-any-file: "packages/frontend/**/*"
 
-'packages/backend:test':
-- packages/backend/test/**/*
+packages/frontend:test:
+  - changed-files:
+    - any-glob-to-any-file: "cypress/**/*"
 
-'packages/frontend':
-- packages/frontend/**/*
+packages/backend:
+  - changed-files:
+    - any-glob-to-any-file: "packages/backend/**/*"
 
-'packages/frontend:test':
-- cypress/**/*
+packages/backend:test:
+  - changed-files:
+    - any-glob-to-any-file: "packages/backend/test/**/*"
 
-'packages/sw':
-- packages/sw/**/*
+packages/sw:
+  - changed-files:
+    - any-glob-to-any-file: "packages/sw/**/*"
 
-'packages/misskey-js':
-- packages/misskey-js/**/*
+packages/misskey-js:
+  - changed-files:
+    - any-glob-to-any-file: "packages/misskey-js/**/*"
 
-'packages/misskey-js:test':
-- packages/misskey-js/test/**/*
-- packages/misskey-js/test-d/**/*
+packages/misskey-js:test:
+  - changed-files:
+    - any-glob-to-any-file: "packages/misskey-js/test/**/*"
+    - any-glob-to-any-file: "packages/misskey-js/test-d/**/*"
