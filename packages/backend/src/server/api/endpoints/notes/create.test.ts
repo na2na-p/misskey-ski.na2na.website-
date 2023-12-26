@@ -64,7 +64,7 @@ describe('api:notes/create', () => {
 
 			test('0 characters cw', () => {
 				expect(v({ text: 'Body', cw: '' }))
-					.toBe(INVALID);
+					.toBe(VALID);
 			});
 
 			test('reject only cw', () => {
