@@ -34,7 +34,7 @@ services:
 
   db:
     restart: always
-    image: postgres:15.3-bullseye
+    image: postgres:15.6-bullseye
     networks:
       - internal_network
     env_file:
