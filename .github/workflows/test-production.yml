@@ -19,7 +19,7 @@ jobs:
         node-version: [22.11.0]
 
     steps:
-    - uses: actions/checkout@v4.1.6
+    - uses: actions/checkout@v4.1.7
       with:
         submodules: true
     - name: Install pnpm
